@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +32,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Usuarios',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,14 +74,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Events.wsgi.application'
 
+REST_FRAMEWORK ={
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAdminUser',
+    )
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'b0zccdzlpwwlku0ipsfh',
+        'USER': 'uzqz28hmz8wmoylx',
+        'PASSWORD': 'GjEozcsT9gkZqUCLaVKl' ,
+        'HOST': 'b0zccdzlpwwlku0ipsfh-mysql.services.clever-cloud.com',
+        'PORT': '3306',
     }
 }
 
@@ -118,3 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
