@@ -1,0 +1,5 @@
+#Archivos que no agregaremos directamente al repositorio
+
+#Paquetes Python y entorno virtual
+/Env
+#Si desdea trabajar con los paquetes de este entorno virtual, instale paquetes desde 'requirements.txt' usando el comando -> pip3 install -r requirements.txt
