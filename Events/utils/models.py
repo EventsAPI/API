@@ -7,3 +7,14 @@ class OwnerModel (models.Model):
     
     class Meta:
         abstract = True
+
+class InicioModel (models.Model):
+    creado = models.DateTimeField(
+        'creado el', auto_now_add=True, help_text='Fecha en la que se registró.'
+    )
+    modificado = models.DateTimeField(
+        'modificado el', auto_now=True, help_text='Fecha en la que se modificó.'
+    )
+    
+    class Meta:
+        abstract=True
