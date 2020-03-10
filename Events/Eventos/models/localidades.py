@@ -27,5 +27,5 @@ class TipoLocal (models.Model):
 
 class Localidad (models.Model):
     asientos_totales = models.IntegerField()
-    idAsiento = models.ForeignKey(Asientos,on_delete=models.SET_NULL)
-    idTipoLocal = models.ForeignKey(TipoLocal, on_delete=models.SET_NULL)
+    idAsiento = models.ForeignKey(Asientos,on_delete=models.CASCADE)
+    idTipoLocal = models.ForeignKey(TipoLocal, on_delete=models.CASCADE)
