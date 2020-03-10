@@ -27,3 +27,5 @@ class EventosSerializer(serializers.ModelSerializer):
         ) 
         #todos los campos + los campos creados en el serializador para mostrar valoraciones,
         #localidades y comentarios
+        depth = 1
+        #la profundidad para indagar en las foráneas
