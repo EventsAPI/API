@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Events.Eventos.models.localidades import Localidad, Asientos, TipoLocal
+from Eventos.models.localidades import Localidad, Asientos, TipoLocal
 
 class AsientosSerializer (serializers.ModelSerializer):
     class Meta:
@@ -17,9 +17,9 @@ class LocalidadSerializer (serializers.ModelSerializer):
     
     class Meta:
         model = Localidad
-        fields = (
+        fields = [
             'asientos_totales',
             'asientos',
             'tipos'
-        )
+        ]
         depth = 1
