@@ -17,9 +17,9 @@ class LocalidadSerializer (serializers.ModelSerializer):
     
     class Meta:
         model = Localidad
-        fields = (
+        fields = [
             'asientos_totales',
             'asientos',
             'tipos'
-        )
+        ]
         depth = 1

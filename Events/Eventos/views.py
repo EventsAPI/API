@@ -15,6 +15,7 @@ class CrearEvento (CreateAPIView):
 class ListarEvento (ListAPIView):
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
+    model = Eventos
     permission_classes = []
 
 class BorrarEvento (DestroyAPIView):
