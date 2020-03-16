@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Eventos.models.eventos import Eventos
+from ..models.eventos import Eventos
 from .valoraciones import ValoracionesSerializer
 from .comentarios import ComentariosSerializer
 from .localidades import LocalidadSerializer
