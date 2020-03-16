@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from Events.Eventos.models.eventos import Eventos
-from Events.Eventos.serializers.valoraciones import ValoracionesSerializer
-from Events.Eventos.serializers.comentarios import ComentariosSerializer
-from Events.Eventos.serializers.localidades import LocalidadSerializer
+from Eventos.models.eventos import Eventos
+from .valoraciones import ValoracionesSerializer
+from .comentarios import ComentariosSerializer
+from .localidades import LocalidadSerializer
 #Estas importaciones traen los serializadores descritos en los otros ficheros python en la carpeta Serializers
 #Los importamos debido a que es necesario serializar su información en este serializador EventosSerializer
 

@@ -3,9 +3,9 @@
 #Vistas genéricas
 from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, UpdateAPIView
 #Serializador
-from Events.Eventos.serializers.eventos import EventosSerializer
+from .serializers.eventos import EventosSerializer
 #Modelo
-from Events.Eventos.models.eventos import Eventos
+from Eventos.models.eventos import Eventos
 
 class CrearEvento (CreateAPIView):
     queryset = Eventos.objects.all()

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Events.Eventos.models.localidades import Localidad, Asientos, TipoLocal
+from Eventos.models.localidades import Localidad, Asientos, TipoLocal
 
 class AsientosSerializer (serializers.ModelSerializer):
     class Meta:
