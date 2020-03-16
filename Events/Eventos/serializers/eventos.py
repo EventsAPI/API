@@ -21,7 +21,7 @@ class EventosSerializer(serializers.ModelSerializer):
             'lugar',
             'localidades',
             'estado',
-            'organizadores'
+            'organizadores',
             'valoraciones',
             'comentarios'
         ) 
