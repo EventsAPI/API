@@ -27,3 +27,8 @@ class ActualizarEvento (UpdateAPIView):
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
     permission_classes = []
+
+class ValoracionesSerializer (serializers.ModelSerializer):        
+    queryset = Eventos.objects.all()
+    serializer_class = EventosSerializer
+    permission_classes = []
