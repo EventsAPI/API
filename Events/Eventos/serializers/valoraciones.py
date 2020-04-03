@@ -10,7 +10,8 @@ class ValoracionesSerializer (serializers.ModelSerializer):
 
     class meta:
     model = valoraciones 
-    fields= [
+    fields= 
+    [
     'nombre',
     'evento',
     'fecha',
