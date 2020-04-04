@@ -17,11 +17,15 @@ from django.contrib import admin
 
 from django.urls import path, include
 #Para incluir las demás URL se utiliza el 'import include'
-
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('Eventos.urls')), #URLs de Eventos
+
+  path('', include('Eventos.urls')),
+  path('admin/', admin.site.urls),
+
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
