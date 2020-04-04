@@ -3,7 +3,7 @@ from models  import Valoraciones
 
 
 class Valoraciones (models.Model):
-    Valoraciones = models.FloatField()    
+      
     idUsuario = models.ForeignKey('Usuarios.Usuario', on_delete=models.DO_NOTHING)
 
     nombre = models.CharField(max_length=50)
@@ -11,5 +11,6 @@ class Valoraciones (models.Model):
     fecha = models.DateField()
     hora = models.TimeField()
     lugar = models.CharField(max_length=255)
-    
+    Valoraciones = models.FloatField()  
+
     idLocalidad = models.ForeignKey('Eventos.Localidad', on_delete=models.DO_NOTHING)
