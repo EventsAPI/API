@@ -1,10 +1,9 @@
 from django.db import models
-from Eventos.models.valoraciones import Valoraciones
-from .views import CrearValoracion, MostrarValoracion
+from models  import Valoraciones
 
 
 class Valoraciones (models.Model):
-    valoracion = models.FloatField()    
+    Valoraciones = models.FloatField()    
     idUsuario = models.ForeignKey('Usuarios.Usuario', on_delete=models.DO_NOTHING)
 
     nombre = models.CharField(max_length=50)

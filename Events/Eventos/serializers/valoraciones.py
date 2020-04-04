@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Eventos.models.valoraciones import Valoraciones
+from serializers.Valoraciones import Valoraciones
 from .localidades import LocalidadSerializer
 
 class ValoracionesSerializer (serializers.ModelSerializer):        
@@ -9,9 +9,9 @@ class ValoracionesSerializer (serializers.ModelSerializer):
     idLocalidad = LocalidadSerializer ()
 
     class meta:
-    model = valoraciones 
+    model = Valoraciones 
     fields= 
-    [
+    (
     'nombre',
     'evento',
     'fecha',
@@ -19,5 +19,5 @@ class ValoracionesSerializer (serializers.ModelSerializer):
     'lugar',
     'precio',
     'idLocalidad',
-    ]
+    )
      depth = 1

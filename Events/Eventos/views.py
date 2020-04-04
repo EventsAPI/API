@@ -5,7 +5,7 @@ from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, 
 #Serializador
 from .serializers.eventos import EventosSerializer
 #Modelo
-from Eventos.models.eventos import Eventos
+from Eventos.models import Eventos
 
 class CrearEvento (CreateAPIView):
     queryset = Eventos.objects.all()
@@ -28,7 +28,7 @@ class ActualizarEvento (UpdateAPIView):
     serializer_class = EventosSerializer
     permission_classes = []
 
-class ValoracionesSerializer (serializers.ModelSerializer):        
+class Valoraciones (serializers.ModelSerializer):        
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
     permission_classes = []
