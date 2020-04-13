@@ -7,25 +7,23 @@ from .localidades import LocalidadSerializer
 #Los importamos debido a que es necesario serializar su información en este serializador EventosSerializer
 
 class EventosSerializer(serializers.ModelSerializer):
-    idValoracion = ValoracionesSerializer ()
-    idLocalidad = LocalidadSerializer ()
-    idComentarios = ComentariosSerializer ()
+    #idValoracion = ValoracionesSerializer ()
+    #idLocalidad = LocalidadSerializer ()
+    #idComentarios = ComentariosSerializer ()
     
     class Meta:
         model = Eventos #el modelo a serializar
         fields = [
+            'id',
             'afiche',
             'nombre',
             'fecha',
             'hora',
             'lugar',
-            'idLocalidad',
             'estado',
             'organizadores',
-            'idValoracion',
-            'idComentarios'
         ]
         #todos los campos + los campos creados en el serializador para mostrar valoraciones,
         #localidades y comentarios
-        depth = 1
+        #depth = 1
         #la profundidad para indagar en las foráneas

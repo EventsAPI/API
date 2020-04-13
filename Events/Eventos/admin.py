@@ -13,7 +13,7 @@ class Comentarios (admin.ModelAdmin):
 
 @admin.register (Eventos)
 class Eventos (admin.ModelAdmin):
-    list_display = ('nombre', 'fecha', 'lugar', 'estado', 'organizadores', 'idComentarios',)
+    list_display = ('nombre', 'fecha', 'lugar', 'estado', 'organizadores')
     list_filter = ('lugar', 'fecha', 'estado', 'organizadores',)
 
 @admin.register (Asientos)
@@ -27,7 +27,7 @@ class TipoLocal (admin.ModelAdmin):
 
 @admin.register (Localidad)
 class Localidad (admin.ModelAdmin):
-    list_display = ('asientos_totales', 'idAsiento', 'idTipoLocal',)
+    list_display = ('asientos_totales', 'idAsiento',)
 
 @admin.register (Valoraciones)
 class Valoraciones (admin.ModelAdmin):
