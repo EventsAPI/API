@@ -1,5 +1,5 @@
 from django.db import models
-from models  import Valoraciones
+from Eventos.models.Valoraciones import ValoracionesSerializers
 
 
 class Valoraciones (models.Model):
