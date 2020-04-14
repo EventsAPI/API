@@ -30,7 +30,7 @@ class UserSerializer (serializers.ModelSerializer):
     
     def create(self, validated_data):
         user = Usuario(
-            first_name = validated_data['firs_name'],
+            first_name = validated_data['first_name'],
             last_name = validated_data['last_name'],
             username = validated_data['username'],
             email = validated_data['email'],
