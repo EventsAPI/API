@@ -13,7 +13,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 
 class UsuarioViewSet (viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
+    queryset = Usuario.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     authentication_classes = ()
     permission_classes = ()
