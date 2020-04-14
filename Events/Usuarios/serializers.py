@@ -5,13 +5,24 @@ from .models.perfiles import Perfil
 #Token de Rest Framework
 from rest_framework.authtoken.models import Token
 
+class ProfileSerializer (serializers.ModelSerializer):
+    """
+        Serializador de un perfil, que conserva la información de un usuario
+    """
+    class Meta:
+        model = Perfil
+        fields = ['usuario', 'foto', 'genero', 'biografia']
+        read_only_fields = ['eventos_valorados']
+
 class UserSerializer (serializers.ModelSerializer):
     """
         Serializador que sirve para la obtención de datos de un usuario
     """
+    perfil = ProfileSerializer(read_only = True)
+    
     class Meta:
         model = Usuario
-        fields = ['id', 'first_name', 'last_name','username', 'email', 'password', 'is_verified', 'is_superuser']
+        fields = ['id', 'first_name', 'last_name','username', 'email', 'password', 'is_verified', 'is_superuser', 'perfil']
         extra_kwargs = {
             'password' : {'write_only': True}   
         }
@@ -30,14 +41,3 @@ class UserSerializer (serializers.ModelSerializer):
         Token.objects.create(user = user)
         
         return user
-
-class ProfileSerializer (serializers.ModelSerializer):
-    """
-        Serializador de un perfil, que conserva la información de un usuario
-    """
-    usuario = UserSerializer(read_only = True)
-    
-    class Meta:
-        model = Perfil
-        fields = ['usuario', 'foto', 'genero', 'biografia', 'eventos_valorados']
-        dept = 1
