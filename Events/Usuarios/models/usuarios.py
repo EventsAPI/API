@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Usuario (AbstractUser):
+    username = models.CharField(
+        'username',
+        max_length = 50,
+        unique = True,
+        error_messages = {
+            'unique': 'Ya existe un usuario con este nombre de usuario.'
+        }
+    )
     
     USERNAME_FIELD = 'username'
     
