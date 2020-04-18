@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Reservas
 
 
-class SerieSerializer(serializers.Serializer):
+class ReservarSerializer(serializers.Serializer):
 
     nombre = models.CharField(max_length=50)
     fecha = models.DateField()
