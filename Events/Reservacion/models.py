@@ -1,4 +1,5 @@
 from django.db import models
+from Reservas.serializers import ReservarSerializer
 
 class Reservas (models.Model):
     LIBRE = 1
