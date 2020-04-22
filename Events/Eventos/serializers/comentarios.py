@@ -11,4 +11,3 @@ class ComentariosSerializer (serializers.ModelSerializer):
             'comentario',
             'idUsuario'
         ]
-        depth = 1
