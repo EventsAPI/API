@@ -1,23 +1,23 @@
 from rest_framework import serializers
-from Eventos.models.pagos import Pagos
-from .Usuarios import UsuariosSerializer
-from .Eventos import EventosSerializer
+from Pagos.models.pagos import Pagos
+from .usuarios import UsuariosSerializer
+from .eventos import EventosSerializer
 from .localidades import LocalidadSerializer
 
-
-
 class PagosSerializer(serializers.ModelSerializer):
-    idusuario = ValoracionesSerializer ()
-    idevento = LocalidadSerializer ()
+    idUsuario = UsuariosSerializer(many = True , read_only = True)
+    idEvento = EventosSerializer (many = True , read_only = True)
+    idLocalidades = LocalidadSerializer (many = True , read_only = True)
 
     class Meta:
         model = Pagos #el modelo a serializar
         fields = [
-            'tipo_pago',
+            'tipoPago',
             'estado',
             'total',
-            'idusuario',
-            'idevento',
+            'idUsuario',
+            'idEvento',
+            'idLocalidad',
         ]
 
-          depth = 1
+        depth = 1

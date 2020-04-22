@@ -26,5 +26,6 @@ class Pagos (models.Model):
     estado = models.SmallIntegerField(choices=ESTADO, default=PENDIENTE)
     total = models.FloatField()
     
+    idLocalidad = models.ForeignKey('Localidad.Localidad', on_delete=models.CASCADE)
     idUsuario = models.ForeignKey('Usuarios.Usuario', on_delete=models.CASCADE)
     idEvento = models.ForeignKey('Eventos.Eventos', on_delete=models.CASCADE)

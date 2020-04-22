@@ -3,7 +3,7 @@ from django.contrib import admin
 # Registrando los modelos
 from .models.comentarios import Comentarios
 from .models.eventos import Eventos
-from .models.localidades import Asientos, TipoLocal, Localidad
+from .models.localidades import Asientos, Localidad
 from .models.valoraciones import Valoraciones
 
 @admin.register (Comentarios)
@@ -19,11 +19,6 @@ class Eventos (admin.ModelAdmin):
 @admin.register (Asientos)
 class Asientos (admin.ModelAdmin):
     list_display = ('estado',)
-
-@admin.register (TipoLocal)
-class TipoLocal (admin.ModelAdmin):
-    list_display = ('tipo', 'costo',)
-    list_filter = ('tipo', 'costo',)
 
 @admin.register (Localidad)
 class Localidad (admin.ModelAdmin):
