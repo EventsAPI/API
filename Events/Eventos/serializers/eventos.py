@@ -7,9 +7,9 @@ from .localidades import LocalidadSerializer
 #Los importamos debido a que es necesario serializar su información en este serializador EventosSerializer
 
 class EventosSerializer(serializers.ModelSerializer):
-    idValoracion = ValoracionesSerializer (read_only = True)
-    idLocalidad = LocalidadSerializer (read_only = True)
-    idComentarios = ComentariosSerializer (read_only = True)
+    idValoracion = ValoracionesSerializer (many=True, read_only=True)
+    idLocalidad = LocalidadSerializer (many=True, read_only=True)
+    idComentarios = ComentariosSerializer (many=True, read_only=True)
     
     class Meta:
         model = Eventos #el modelo a serializar
