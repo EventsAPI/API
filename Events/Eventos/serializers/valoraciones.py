@@ -4,7 +4,7 @@ from ..models.valoraciones import Valoraciones
 from Usuarios.serializers import UserSerializer
 
 class ValoracionesSerializer (serializers.ModelSerializer):
-    idUsuario = UserSerializer(many = True, read_only = True)
+    idUsuario = UserSerializer(many=True, read_only=True)
     
     class Meta:
         model = Valoraciones
