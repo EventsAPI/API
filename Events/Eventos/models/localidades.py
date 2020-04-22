@@ -1,16 +1,5 @@
 from django.db import models
 
-class Asientos (models.Model):
-    LIBRE = 1
-    OCUPADO = 3
-    
-    ESTADOS = (
-        (LIBRE, 'Asiento libre'),
-        (OCUPADO, 'Asiento ocupado')
-    )
-    
-    estado = models.SmallIntegerField(choices=ESTADOS, default=LIBRE)
-
 class Localidad (models.Model):
     GENERAL = 1
     ORO = 3
@@ -24,5 +13,15 @@ class Localidad (models.Model):
     
     tipo = models.SmallIntegerField(choices=TIPOS, default=GENERAL)
     costo = models.FloatField()
+
+class Asientos (models.Model):
+    LIBRE = 1
+    OCUPADO = 3
     
-    idAsiento = models.ForeignKey(Asientos,on_delete=models.CASCADE)
+    ESTADOS = (
+        (LIBRE, 'Asiento libre'),
+        (OCUPADO, 'Asiento ocupado')
+    )
+    
+    estado = models.SmallIntegerField(choices=ESTADOS, default=LIBRE)
+    localidad = models.ForeignKey(Localidad, related_name='asientos', null=True, blank=True, on_delete=models.CASCADE)
