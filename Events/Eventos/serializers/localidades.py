@@ -4,7 +4,7 @@ from ..models.localidades import Localidad, Asientos
 class AsientosSerializer (serializers.ModelSerializer):
     class Meta:
         model = Asientos
-        fields = ['estado']
+        fields = ['id', 'estado']
 
 
 class LocalidadSerializer (serializers.ModelSerializer):

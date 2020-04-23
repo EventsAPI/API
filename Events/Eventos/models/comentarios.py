@@ -4,4 +4,4 @@ class Comentarios (models.Model):
     fecha = models.DateTimeField()
     comentario = models.TextField(max_length=500, blank=True)
     
-    idUsuario = models.ForeignKey('Usuarios.Usuario', on_delete=models.DO_NOTHING)
+    evento = models.ForeignKey('Eventos.Eventos', related_name='eventosComent', null=True, blank=True, on_delete=models.CASCADE)

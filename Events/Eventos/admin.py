@@ -8,8 +8,8 @@ from .models.valoraciones import Valoraciones
 
 @admin.register (Comentarios)
 class Comentarios (admin.ModelAdmin):
-    list_display = ('idUsuario', 'comentario', 'fecha',)
-    list_filter = ('fecha', 'idUsuario',)
+    list_display = ('comentario', 'fecha',)
+    list_filter = ('fecha',)
 
 @admin.register (Eventos)
 class Eventos (admin.ModelAdmin):
@@ -26,4 +26,4 @@ class Localidad (admin.ModelAdmin):
 
 @admin.register (Valoraciones)
 class Valoraciones (admin.ModelAdmin):
-    list_display = ('valoracion', 'idUsuario',)
+    list_display = ('valoracion',)

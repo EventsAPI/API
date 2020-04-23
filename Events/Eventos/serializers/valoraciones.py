@@ -1,15 +1,14 @@
 from rest_framework import serializers
 from ..models.valoraciones import Valoraciones
-#Serializador de Usuario
-from Usuarios.serializers import UserSerializer
 
 class ValoracionesSerializer (serializers.ModelSerializer):
-    idUsuario = UserSerializer(many=True, read_only=True)
+    usuario = serializers.HiddenField(default = serializers.CurrentUserDefault()) #Toma el valor del usuario logueado actualmente
     
     class Meta:
         model = Valoraciones
         fields = [
             'valoracion',
-            'idUsuario'
+            'evento',
+            'usuario'
         ]
         depth = 1

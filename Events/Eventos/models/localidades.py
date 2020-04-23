@@ -13,6 +13,8 @@ class Localidad (models.Model):
     
     tipo = models.SmallIntegerField(choices=TIPOS, default=GENERAL)
     costo = models.FloatField()
+    
+    evento = models.ForeignKey('Eventos.Eventos', related_name='eventosLocal', null=True, blank=True, on_delete=models.CASCADE)
 
 class Asientos (models.Model):
     LIBRE = 1
