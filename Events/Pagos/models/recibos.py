@@ -14,5 +14,5 @@ class Recibos (models.Model):
     
     estado = models.SmallIntegerField(choices=ESTADO, default=PAGADO)
     
-    idPago = models.OneToOneField('Pagos.Pagos', on_delete=models.CASCADE)
+    idPago = models.ForeignKey('Pagos.Pagos', related_name='recibos' ,on_delete=models.CASCADE)
     #El primer 'Pagos' es sobre la app de django; el segundo, el nombre del modelo.

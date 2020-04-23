@@ -2,5 +2,4 @@ from django.db import models
 
 class Valoraciones (models.Model):
     valoracion = models.FloatField()
-    
-    idUsuario = models.ForeignKey('Usuarios.Usuario', on_delete=models.DO_NOTHING)
+    evento = models.ForeignKey('Eventos.Eventos', related_name='eventosVal', null=True, blank=True, on_delete=models.CASCADE)

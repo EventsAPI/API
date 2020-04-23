@@ -3,9 +3,9 @@
 #Vistas genéricas
 from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, UpdateAPIView
 #Serializador
-from .serializers.eventos import EventosSerializer
+from ..serializers.eventos import EventosSerializer
 #Modelo
-from Eventos.models.eventos import Eventos
+from ..models.eventos import Eventos
 
 class CrearEvento (CreateAPIView):
     queryset = Eventos.objects.all()
@@ -17,6 +17,15 @@ class ListarEvento (ListAPIView):
     serializer_class = EventosSerializer
     model = Eventos
     permission_classes = []
+
+class ListarDepartamento (ListAPIView):
+    serializer_class = EventosSerializer
+    permission_classes = []
+    
+    def get_queryset(self):
+        """ En esta vista se retorna solamente la búsqueda por departamentos """
+        lugar = self.kwargs['lugar']
+        return Eventos.objects.filter(lugar=lugar)
 
 class BorrarEvento (DestroyAPIView):
     queryset = Eventos.objects.all()

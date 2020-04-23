@@ -33,6 +33,10 @@ class Usuario (AbstractUser):
         help_text='Verdadero si el usuario verificó su registro.'
     )
     
+    comentario = models.ForeignKey ('Eventos.Comentarios', related_name='comentarios', null=True, blank=True, on_delete=models.CASCADE)
+    
+    valoraciones = models.ForeignKey ('Eventos.Valoraciones', related_name='valoraciones' ,null=True, blank=True, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.username
     

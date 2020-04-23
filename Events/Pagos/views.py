@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from .serializers.pagos import PagosSerializer
+from .serializers.recibos import RecibosSerializer
+#Modelo
+from .models.pagos import Pagos
+from .models.recibos import Recibos
+#ModelViewSet
+from rest_framework import viewsets
 
-# Create your views here.
+class PagosViewSet(viewsets.ModelViewSet):
+    queryset = Pagos.objects.all()
+    serializer_class = PagosSerializer
+    permission_classes = []
+
+class RecibosViewSet(viewsets.ModelViewSet):
+    queryset = Recibos.objects.all()
+    serializer_class = RecibosSerializer
+    permission_classes = []
