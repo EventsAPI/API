@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from .Serializers import Reservacion
+from rest_framework import viewsets 
+from .models import Reservacion
 
-from Eventos.Reservacion.models import Eventos
-# Create your views here.
-class ReservarEvento (CreateAPIView):
-    queryset = Eventos.objects.all()
-    serializer_class = EventosSerializer
+class ReservacionView (ModelAPIView):
+    queryset = Reservacion.objects.all()
+    serializer_class = ReservarSerializer
     permission_classes = []

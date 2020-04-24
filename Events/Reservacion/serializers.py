@@ -2,14 +2,11 @@ from rest_framework import serializers
 from .models import Reservas
 
 
-class ReservarSerializer(serializers.Serializer):
+class ReservarSerializer(serializers.ModelSerializer):
 
-    nombre = models.CharField(max_length=50)
-    fecha = models.DateField()
-    hora = models.TimeField()
-    lugar = models.CharField(max_length=255)
-    estado = models.SmallIntegerField(choices=ESTADO, default=ACTIVO)
-    organizadores = models.CharField(max_length=150)
+class Meta: 
+    model = Reservas
+    fieds = '__all__'
     
     def create(self, validated_data):
         """
@@ -24,7 +21,7 @@ class ReservarSerializer(serializers.Serializer):
         """
         
         instance.nombre = validated_data.get('nombre', instance.name)
-        instance.fecha = validated_data.get('Fecha', fecha.name)
+        instance.fecha = validated_data.get('Fecha', instance.fecha) 
         instance.lugar = validated_data.get('lugar', instance.lugar)
         instance.estado = validated_data.get('estado', instance.estado)
     return instance
