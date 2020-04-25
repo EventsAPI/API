@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Reservas
 
 
-class ReservarSerializer(serializers.ModelSerializer):
+class ReservacionSerializer(serializers.ModelSerializer):
 
 class Meta: 
     model = Reservas

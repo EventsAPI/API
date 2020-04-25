@@ -1,6 +1,4 @@
 from django.db import models
-from rest_framework import Serializer   
-
 
 class Valoraciones (models.Model):
       
