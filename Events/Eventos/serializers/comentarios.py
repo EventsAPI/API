@@ -2,14 +2,9 @@ from rest_framework import serializers
 from ..models.comentarios import Comentarios
 
 class ComentariosSerializer (serializers.ModelSerializer):
-    usuario = serializers.HiddenField(default = serializers.CurrentUserDefault()) #Valor por parte de RestFramework para conocer al usuario actualmente logueado
+    owner = serializers.StringRelatedField(default = serializers.CurrentUserDefault(), read_only=True) #Valor por parte de RestFramework para conocer al usuario actualmente logueado
     
     class Meta:
         model = Comentarios
-        fields = [
-            'fecha',
-            'usuario',
-            'evento',
-            'comentario',
-        ]
-        depth=1
+        fields = ['fecha', 'comentario', 'owner']
+        read_only_fields = ['fecha']
