@@ -8,3 +8,6 @@ class ComentariosViewSet (viewsets.ModelViewSet):
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
     permission_classes = []
+    
+    def perform_create(self, serializer):
+        serializer.save()
