@@ -8,3 +8,6 @@ class ValoracionesViewSet (viewsets.ModelViewSet):
     queryset = Valoraciones.objects.all()
     serializer_class = ValoracionesSerializer
     permission_classes = []
+    
+    def perform_create(self, serializer):
+        serializer.save()
