@@ -1,7 +1,7 @@
 from django.db import models
+from django.conf import settings
 
 class Comentarios (models.Model):
-    fecha = models.DateTimeField()
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='owner', on_delete=models.SET_NULL, blank=True, null=True)
+    fecha = models.DateTimeField(auto_now=True)
     comentario = models.TextField(max_length=500, blank=True)
-    
-    evento = models.ForeignKey('Eventos.Eventos', related_name='eventosComent', null=True, blank=True, on_delete=models.CASCADE)
