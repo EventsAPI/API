@@ -3,7 +3,7 @@ from rest_framework import serializers
 from ..models.pagos import Pagos
 
 class PagosSerializer (serializers.ModelSerializer):
-    owner_p = serializers.HiddenField(default = serializers.CurrentUserDefault()) #Valor por parte de RestFramework para conocer al owner_p (usuario) actualmente logueado
+    owner_p = serializers.StringRelatedField(default = serializers.CurrentUserDefault()) #Valor por parte de RestFramework para conocer al owner_p (usuario) actualmente logueado
     class Meta:
         model = Pagos
         fields = [
