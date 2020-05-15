@@ -11,7 +11,7 @@ class ProfileSerializer (serializers.ModelSerializer):
     """
     class Meta:
         model = Perfil
-        fields = ['usuario', 'foto', 'genero', 'biografia']
+        fields = ['usuario', 'foto', 'creado', 'genero', 'biografia']
         read_only_fields = ['eventos_valorados']
 
 class UserSerializer (serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class UserSerializer (serializers.ModelSerializer):
     
     class Meta:
         model = Usuario
-        fields = ['id', 'first_name', 'last_name','username', 'email', 'password', 'is_verified', 'is_superuser', 'perfil']
+        fields = ['id', 'first_name', 'last_name','username', 'email', 'password', 'is_superuser', 'perfil']
         extra_kwargs = {
             'password' : {'write_only': True}   
         }
@@ -34,11 +34,13 @@ class UserSerializer (serializers.ModelSerializer):
             last_name = validated_data['last_name'],
             username = validated_data['username'],
             email = validated_data['email'],
-            is_verified = validated_data['is_verified'],
             is_superuser = validated_data['is_superuser'],
         )
         user.set_password(validated_data['password'])
         user.save()
         Token.objects.create(user = user)
+        
+        biografia_default = 'Aun no tiene biografia completa.'
+        Perfil.objects.create(usuario = user, biografia= biografia_default)
         
         return user
