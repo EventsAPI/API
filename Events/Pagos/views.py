@@ -10,8 +10,14 @@ class PagosViewSet(viewsets.ModelViewSet):
     queryset = Pagos.objects.all()
     serializer_class = PagosSerializer
     permission_classes = []
+    
+    def perform_create(self, serializer):
+        serializer.save()
 
 class RecibosViewSet(viewsets.ModelViewSet):
     queryset = Recibos.objects.all()
     serializer_class = RecibosSerializer
     permission_classes = []
+    
+    def perform_create(self, serializer):
+        serializer.save()
