@@ -1,9 +1,12 @@
-from django.shortcuts import render
-from .Serializers import Reservacion
-from rest_framework import viewsets 
-from .models import Reserva
+from .serializers import ReservasSerializer
+
+from .models import Reservas
+
+#ModelViewSet
+from rest_framework import viewsets
 
 class ReservacionViewSet(viewsets.ModelViewSet):
-    queryset = Reservacion.objects.all()
-    serializer_class = ReservacionSerializer
+    queryset = Reservas.objects.all()
+    serializer_class = ReservasSerializer
     permission_classes = []
+
