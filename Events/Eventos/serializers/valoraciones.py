@@ -1,7 +1,9 @@
 from rest_framework import serializers
-from Eventos.models.valoraciones import Valoraciones
+from ..models.valoraciones import Valoraciones
 
 class ValoracionesSerializer (serializers.ModelSerializer):
+    owner_v = serializers.HiddenField(default = serializers.CurrentUserDefault()) #Toma el valor del usuario logueado actualmente
+    
     class Meta:
         model = Valoraciones
-        fields = '__all__'
+        fields = ['owner_v', 'valoracion']

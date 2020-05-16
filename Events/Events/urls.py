@@ -24,6 +24,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Eventos.urls')), #URLs de Eventos
+<<<<<<< HEAD
      path('', include('Reservacion.urls')),
 
+=======
+    path('', include('Usuarios.urls')), #URLs de Usuarios
+    path('', include('Pagos.urls')), #URLs de Pagos
+>>>>>>> 56e7d6177546dd29c66e175b5c191b1324d4214f
 ] + static (settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

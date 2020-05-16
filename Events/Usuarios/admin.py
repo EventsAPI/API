@@ -11,5 +11,5 @@ class Perfil (admin.ModelAdmin):
 
 @admin.register (Usuario)
 class Usuario (admin.ModelAdmin):
-    list_display = ('username', 'email', 'is_verified',)
+    list_display = ('username', 'email', 'is_verified', 'is_superuser',)
     list_filter = ('is_verified',)
