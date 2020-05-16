@@ -124,9 +124,9 @@ REST_FRAMEWORK ={
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'api1',
+        'NAME': 'apirest',
         'USER': 'root',
-        'PASSWORD': 'thepickofdestiny',
+        'PASSWORD': '12345678',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
