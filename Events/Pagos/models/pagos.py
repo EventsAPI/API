@@ -1,6 +1,13 @@
 from django.db import models
+from django.conf import settings
 
-class Pagos (models.Model):
+class OwnerModel (models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='owner_p', on_delete=models.SET_NULL, blank=True, null=True)
+    
+    class Meta:
+        abstract = True
+
+class Pagos (OwnerModel):
     DEPOSITO = 1
     CREDITO = 3
     DEBITO = 5
@@ -25,6 +32,7 @@ class Pagos (models.Model):
     tipoPago = models.SmallIntegerField(choices=TIPO, default=CREDITO)
     estado = models.SmallIntegerField(choices=ESTADO, default=PENDIENTE)
     total = models.FloatField()
-    
-    idUsuario = models.ForeignKey('Usuarios.Usuario', on_delete=models.CASCADE)
-    idEvento = models.ForeignKey('Eventos.Eventos', on_delete=models.CASCADE)
+    recibo = models.ForeignKey('Pagos.Recibos', related_name='pagos', on_delete=models.CASCADE)
+    #El primer 'Pagos' es sobre la app de django; el segundo, el nombre del modelo.
+    evento = models.ForeignKey('Eventos.Eventos', on_delete=models.CASCADE)
+    localidad = models.ForeignKey('Eventos.Localidad', on_delete=models.CASCADE)

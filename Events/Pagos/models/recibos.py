@@ -13,6 +13,3 @@ class Recibos (models.Model):
     #Posibles estados del recibo
     
     estado = models.SmallIntegerField(choices=ESTADO, default=PAGADO)
-    
-    idPago = models.OneToOneField('Pagos.Pagos', on_delete=models.CASCADE)
-    #El primer 'Pagos' es sobre la app de django; el segundo, el nombre del modelo.

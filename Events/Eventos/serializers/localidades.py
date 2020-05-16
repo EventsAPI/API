@@ -1,25 +1,28 @@
 from rest_framework import serializers
-from Eventos.models.localidades import Localidad, Asientos, TipoLocal
+from ..models.localidades import Localidad, Asientos
 
 class AsientosSerializer (serializers.ModelSerializer):
     class Meta:
         model = Asientos
-        fields = '__all__'
+        fields = ['id', 'estado']
 
-class TipoLocalSerializer (serializers.ModelSerializer):
-    class Meta:
-        model = TipoLocal
-        fields = '__all__'
 
 class LocalidadSerializer (serializers.ModelSerializer):
-    asientos = AsientosSerializer (many = True , read_only = True)
-    tipos = TipoLocalSerializer (many = True, read_only = True)
+    asientos = AsientosSerializer (many=True)
     
     class Meta:
         model = Localidad
         fields = [
-            'asientos_totales',
-            'asientos',
-            'tipos'
+            'id',
+            'tipo',
+            'costo',
+            'asientos'
         ]
-        depth = 1
+    
+    def create(self, validated_data):
+        asientos_data = validated_data.pop ('asientos')
+        localidad = Localidad.objects.create(**validated_data)
+        for asiento_data in asientos_data:
+            Asientos.objects.create(localidad=localidad, **asiento_data)
+        
+        return localidad

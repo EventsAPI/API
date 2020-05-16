@@ -21,8 +21,6 @@ class Eventos (models.Model):
     lugar = models.CharField(max_length=255)
     estado = models.SmallIntegerField(choices=ESTADO, default=ACTIVO)
     organizadores = models.CharField(max_length=150)
-    
-    idValoracion = models.ForeignKey('Eventos.Valoraciones', on_delete=models.DO_NOTHING)
-    idLocalidad = models.ForeignKey('Eventos.Localidad', on_delete=models.DO_NOTHING)
-    idComentarios = models.ForeignKey('Eventos.Comentarios', on_delete=models.DO_NOTHING)
-    
+    localidad = models.ForeignKey('Eventos.Localidad', related_name='eventosLocal', null=True, blank=True, on_delete=models.CASCADE)
+    valoracion = models.ForeignKey('Eventos.Valoraciones', related_name='eventosVal', null=True, blank=True, on_delete=models.CASCADE)
+    comentario = models.ForeignKey('Eventos.Comentarios', related_name='eventosComent', null=True, blank=True, on_delete=models.CASCADE)
