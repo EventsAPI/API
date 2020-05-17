@@ -1,27 +1,18 @@
 from rest_framework import serializers
+#Modelos
 from ..models.pagos import Pagos
-from ..models.recibos import Recibos
-#Serializadores extra
-from .recibos import RecibosSerializer
 
 class PagosSerializer (serializers.ModelSerializer):
-    #usuario = serializers.HiddenField(default = serializers.CurrentUserDefault()) #Valor por parte de RestFramework para conocer al usuario actualmente logueado
-    recibos = RecibosSerializer(many=True)
-    
+    owner_p = serializers.StringRelatedField(default = serializers.CurrentUserDefault()) #Valor por parte de RestFramework para conocer al owner_p (usuario) actualmente logueado
     class Meta:
         model = Pagos
         fields = [
+            'id',
             'tipoPago',
             'estado',
             'total',
-            #'usuario',
-            'recibos',
+            'owner_p',
+            'evento',
+            'localidad',
         ]
-    
-    def create(self, validated_data):
-        recibos_data = validated_data.pop('recibos')
-        pago = Pagos.objects.create(**validated_data)
-        for recibo_data in recibos_data:
-            Recibos.objects.create(idPago=pago, **recibo_data)
-        
-        return pago
+        read_only_fields = ['owner_p']

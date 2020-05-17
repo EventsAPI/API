@@ -13,6 +13,7 @@ class LocalidadSerializer (serializers.ModelSerializer):
     class Meta:
         model = Localidad
         fields = [
+            'id',
             'tipo',
             'costo',
             'asientos'
