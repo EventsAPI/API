@@ -10,11 +10,13 @@ from Usuarios.models.usuarios import Usuario
 #Email
 from django.core.mail import send_mail
 from django.conf import settings
+#Permisos
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 class CrearEvento (CreateAPIView):
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
-    permission_classes = []
+    permission_classes = [IsAdminUser]
     
     #Envío de Email al crear evento
     
@@ -36,11 +38,11 @@ class ListarEvento (ListAPIView):
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
     model = Eventos
-    permission_classes = []
+    permission_classes = [IsAuthenticated]
 
 class ListarDepartamento (ListAPIView):
     serializer_class = EventosSerializer
-    permission_classes = []
+    permission_classes = [IsAuthenticated]
     
     def get_queryset(self):
         """ En esta vista se retorna solamente la búsqueda por departamentos """
@@ -50,9 +52,9 @@ class ListarDepartamento (ListAPIView):
 class BorrarEvento (DestroyAPIView):
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
-    permission_classes = []
+    permission_classes = [IsAdminUser]
 
 class ActualizarEvento (UpdateAPIView):
     queryset = Eventos.objects.all()
     serializer_class = EventosSerializer
-    permission_classes = []
+    permission_classes = [IsAdminUser]
