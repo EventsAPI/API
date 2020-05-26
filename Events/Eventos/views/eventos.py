@@ -1,7 +1,7 @@
 # Para manejar las vistas, importamos las que nos otorga Rest Framework, el modelo, y el/los serializador(es) necesario(s)
 
 #Vistas genéricas
-from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, DestroyAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, get_object_or_404
 #Serializador
 from ..serializers.eventos import EventosSerializer
 #Modelos
@@ -39,6 +39,23 @@ class ListarEvento (ListAPIView):
     serializer_class = EventosSerializer
     model = Eventos
     permission_classes = [IsAuthenticated]
+
+class VerEvento (RetrieveAPIView):
+    """ Para ver solamente un evento """
+    serializer_class = EventosSerializer
+    model = Eventos
+    lookup_field = 'pk'
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        query = Eventos.objects.all()
+        identificacion = self.kwargs['pk']
+        return query.filter(id=identificacion)
+    
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset)
+        return obj
 
 class ListarDepartamento (ListAPIView):
     serializer_class = EventosSerializer
