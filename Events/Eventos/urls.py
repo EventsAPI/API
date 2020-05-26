@@ -1,6 +1,6 @@
 from django.urls import path, include
 #vistas Evento
-from .views.eventos import CrearEvento, ListarEvento, BorrarEvento, ActualizarEvento, ListarDepartamento
+from .views.eventos import CrearEvento, ListarEvento, BorrarEvento, ActualizarEvento, ListarDepartamento, VerEvento
 #vistas generales del módulo
 from .views.localidades import AsientosViewSet, CrearLocalidad, ListarLocalidad, MostrarLocalidad, ActualizarLocalidad, BorrarLocalidad
 from .views.comentarios import ComentariosViewSet
@@ -19,6 +19,7 @@ urlpatterns = [
     path('evento/crear', CrearEvento.as_view(), name = 'crearEvento'),
     path('evento/mostrar/', ListarEvento.as_view(), name = 'listarEvento'),
     path('evento/mostrar/<lugar>', ListarDepartamento.as_view(), name = 'listarDepartamento'),
+    path('evento/ver/<pk>', VerEvento.as_view(), name = 'verUnEvento'),
     path('evento/borrar/<pk>', BorrarEvento.as_view(), name = 'borrarEvento'),
     path('evento/actualizar/<pk>', ActualizarEvento.as_view(), name = 'actualizarEvento'),
     #URLs localidades
