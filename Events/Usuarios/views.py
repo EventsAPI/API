@@ -84,6 +84,7 @@ class VerPerfiles (ListAPIView):
 class VerActualizarPerfil (RetrieveUpdateAPIView):
     serializer_class = ProfileSerializer
     lookup_field = 'id'
+    permission_classes = [IsAuthenticated]
     
     def get_serializer_context(self):
         context = super(VerActualizarPerfil, self).get_serializer_context()
